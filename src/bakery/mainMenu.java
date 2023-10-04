@@ -37,7 +37,13 @@ public class mainMenu extends JFrame {
     public mainMenu() {
         this.initComponents();
         this.centerFrame();
+
+        // Set the background image
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\anuga_2023_bread_bakery.png");
+        lbl_background.setIcon(backgroundImage);
+        lbl_background.setBounds(0, 0, backgroundImage.getIconWidth(), backgroundImage.getIconHeight());
     }
+
 
     public void centerFrame() {
         Toolkit toolkit = this.getToolkit();
@@ -177,7 +183,7 @@ public class mainMenu extends JFrame {
         JOptionPane.showMessageDialog((Component)null, "Functionality not available till now. Plese return later");
     }
 
-    public static void main(String[] args) {
+      static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;

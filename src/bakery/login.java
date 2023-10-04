@@ -1,5 +1,7 @@
 package bakery;
 
+import  Main.*;
+import com.mysql.cj.x.protobuf.MysqlxCursor;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -34,6 +36,7 @@ public class login extends JFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
     private JButton btn_Login;
+    private JButton btn_Back; // New Back button
     private JComboBox<String> cbo_UserType;
     private JLabel jLabel1;
     private JLabel jLabel2;
@@ -48,7 +51,13 @@ public class login extends JFrame {
         this.initComponents();
         this.centerFrame();
         this.conn = ConnectToDatabase.getConnection();
+
+        // Set the background image
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\anuga_2023_bread_bakery.png");
+        lbl_background.setIcon(backgroundImage);
+        lbl_background.setBounds(0, 0, backgroundImage.getIconWidth(), backgroundImage.getIconHeight());
     }
+
 
     public void centerFrame() {
         Toolkit toolkit = this.getToolkit();
@@ -66,6 +75,7 @@ public class login extends JFrame {
         this.txt_Password = new JPasswordField();
         this.cbo_UserType = new JComboBox();
         this.btn_Login = new JButton();
+        this.btn_Back = new JButton(); // Initialize the Back button
         this.lbl_background = new JLabel();
         this.setDefaultCloseOperation(2);
         this.setTitle("Login");
@@ -73,7 +83,7 @@ public class login extends JFrame {
         this.setSize(new Dimension(800, 800));
         this.jPanel1.setLayout((LayoutManager)null);
         this.jLabel1.setFont(new Font("Calibri", 1, 24));
-        this.jLabel1.setText("Welcome to Rohan's bakery");
+        this.jLabel1.setText("ANUGA BREAD & BAKERY");
         this.jPanel1.add(this.jLabel1);
         this.jLabel1.setBounds(170, 40, 290, 50);
         this.jLabel2.setFont(new Font("Calibri", 0, 14));
@@ -101,11 +111,23 @@ public class login extends JFrame {
         this.btn_Login.setText("Login");
         this.btn_Login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-                login.this.btn_LoginActionPerformed(evt);
+                btn_LoginActionPerformed(evt);
             }
         });
         this.jPanel1.add(this.btn_Login);
         this.btn_Login.setBounds(280, 320, 90, 30);
+
+        // Configure the Back button
+        this.btn_Back.setText("Back");
+        this.btn_Back.setFont(new Font("Calibri", Font.PLAIN, 14));
+        this.btn_Back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                btn_BackActionPerformed(evt);
+            }
+        });
+        this.jPanel1.add(this.btn_Back);
+        this.btn_Back.setBounds(180, 320, 90, 30);
+
         this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
         this.jPanel1.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 640, 450);
@@ -141,7 +163,7 @@ public class login extends JFrame {
                 if (access != "Admin" && access == "Manager") {
                 }
 
-                JOptionPane.showMessageDialog((Component)null, "Login successfull");
+                JOptionPane.showMessageDialog((Component)null, "Login successful");
                 mainMenu j = new mainMenu();
                 j.setVisible(true);
                 this.dispose();
@@ -160,8 +182,24 @@ public class login extends JFrame {
         }
 
     }
+    private void btn_BackActionPerformed(ActionEvent evt) {
+        // Close the current login frame
+        this.dispose();
 
-    public static void main(String[] args) {
+        // Create an instance of BakeryManagementApp
+        BakeryManagementApp bakeryApp = new BakeryManagementApp();
+
+        // Call the createLoginPanel method from the BakeryManagementApp instance
+        JPanel loginPanel = bakeryApp.createLoginPanel();
+
+        // Create a new frame and display the loginPanel
+        JFrame frame = new JFrame();
+        frame.getContentPane().add(loginPanel);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
+    static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;
@@ -190,4 +228,3 @@ public class login extends JFrame {
         });
     }
 }
-

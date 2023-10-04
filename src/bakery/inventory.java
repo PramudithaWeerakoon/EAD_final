@@ -155,7 +155,7 @@ public class inventory extends JFrame {
         this.dispose();
     }
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;

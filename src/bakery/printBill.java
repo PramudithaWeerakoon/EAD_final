@@ -223,7 +223,7 @@ public class printBill extends JFrame {
                     float[] columnWidths = new float[]{2.0F, 2.0F, 10.0F, 3.0F, 4.0F, 4.0F};
                     table.setWidths(columnWidths);
                     table.setWidthPercentage(100.0F);
-                    myDocument.add(new Paragraph("ROHAN'S BAKERY", FontFactory.getFont("Times-Bold", 25.0F, 1)));
+                    myDocument.add(new Paragraph("ANUGA BREAD & BAKERY", FontFactory.getFont("Times-Bold", 25.0F, 1)));
                     myDocument.add(new Paragraph((new Date()).toString()));
                     myDocument.add(new Paragraph(" ", FontFactory.getFont("Times-Bold", 10.0F, 1)));
                     myDocument.add(new Paragraph("------------------------------------------------------------------------------------------------------------------------------"));
@@ -327,7 +327,7 @@ public class printBill extends JFrame {
         this.dispose();
     }
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;
