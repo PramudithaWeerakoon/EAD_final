@@ -8,10 +8,31 @@
       <root url="jar://$USER_HOME$/Downloads/jar/antlr-2.7.7.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jar/aspectjweaver-1.9.6.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/rs2xml.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/1" />
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-xalan-6.20.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-metadata-6.20.6.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/New folder (2)" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/Downloads/rs2xml.jar!/src" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/osgi/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/osgi/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-examples/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-examples/src/main/ruby/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-examples/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-excelant/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-excelant/src/poi-ant-contrib/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-excelant/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-integration/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-ooxml-lite-agent/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-ooxml/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-ooxml/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-scratchpad/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi-scratchpad/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/poi-src-5.2.4-20230921-5.2.4/poi/src/test/java" />
     </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/1" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/New folder (2)" recursive="false" />
   </library>
 </component>

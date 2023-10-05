@@ -1,25 +1,12 @@
 package bakery;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.GroupLayout.Alignment;
 
 public class mainMenu extends JFrame {
     private JButton btn_addUser;
@@ -37,7 +24,13 @@ public class mainMenu extends JFrame {
     public mainMenu() {
         this.initComponents();
         this.centerFrame();
+
+        // Set the background image
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\anuga_2023_bread_bakery.png");
+        lbl_background.setIcon(backgroundImage);
+        lbl_background.setBounds(0, 0, backgroundImage.getIconWidth(), backgroundImage.getIconHeight());
     }
+
 
     public void centerFrame() {
         Toolkit toolkit = this.getToolkit();
@@ -69,7 +62,7 @@ public class mainMenu extends JFrame {
         this.lbl_billingMenu1.setText("Billing menu");
         this.pnl_main.add(this.lbl_billingMenu1);
         this.lbl_billingMenu1.setBounds(130, 80, 130, 20);
-        this.btn_logout.setIcon(new ImageIcon(this.getClass().getResource("/com.images/logout.png")));
+        this.btn_logout.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.btn_logout.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 mainMenu.this.btn_logoutActionPerformed(evt);
@@ -131,7 +124,7 @@ public class mainMenu extends JFrame {
         });
         this.pnl_main.add(this.btn_generateSalesReport1);
         this.btn_generateSalesReport1.setBounds(380, 140, 260, 40);
-        this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
+        this.lbl_background.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.pnl_main.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 680, 480);
         GroupLayout layout = new GroupLayout(this.getContentPane());
@@ -170,14 +163,26 @@ public class mainMenu extends JFrame {
     }
 
     private void btn_generateSalesReport1ActionPerformed(ActionEvent evt) {
-        JOptionPane.showMessageDialog((Component)null, "Functionality not available till now. Plese return later");
+        this.dispose();
+
+        // Create a new JFrame
+        JFrame frame = new JFrame("Report Panel");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Add an instance of ReportPanel to the JFrame
+        frame.add(new ReportPanel());
+
+        // Pack the frame to set its size to fit the preferred size and layouts of its subcomponents
+        frame.pack();
+
+        // Make the JFrame visible
+        frame.setVisible(true);
     }
 
     private void btn_addUserActionPerformed(ActionEvent evt) {
         JOptionPane.showMessageDialog((Component)null, "Functionality not available till now. Plese return later");
     }
-
-    public static void main(String[] args) {
+    static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;

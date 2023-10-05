@@ -1,12 +1,11 @@
 package bakery;
 
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
+import org.jdesktop.swingx.JXDatePicker;
+
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -17,19 +16,6 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.GroupLayout.Alignment;
-import org.jdesktop.swingx.JXDatePicker;
 
 public class removeBill extends JFrame {
     Connection conn = null;
@@ -173,7 +159,7 @@ public class removeBill extends JFrame {
         this.txt_bAmount.setFont(new Font("Calibri", 0, 12));
         this.pnl_main.add(this.txt_bAmount);
         this.txt_bAmount.setBounds(150, 200, 210, 30);
-        this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
+        this.lbl_background.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.pnl_main.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 430, 360);
         GroupLayout layout = new GroupLayout(this.getContentPane());
@@ -250,7 +236,7 @@ public class removeBill extends JFrame {
         this.dispose();
     }
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;

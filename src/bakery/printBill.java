@@ -7,12 +7,11 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
+import org.jdesktop.swingx.JXDatePicker;
+
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -27,20 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.GroupLayout.Alignment;
-import org.jdesktop.swingx.JXDatePicker;
 
 public class printBill extends JFrame {
     Connection conn = null;
@@ -184,7 +169,7 @@ public class printBill extends JFrame {
         });
         this.pnl_main.add(this.btn_clea);
         this.btn_clea.setBounds(230, 300, 130, 40);
-        this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
+        this.lbl_background.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.pnl_main.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 430, 380);
         GroupLayout layout = new GroupLayout(this.getContentPane());
@@ -223,7 +208,7 @@ public class printBill extends JFrame {
                     float[] columnWidths = new float[]{2.0F, 2.0F, 10.0F, 3.0F, 4.0F, 4.0F};
                     table.setWidths(columnWidths);
                     table.setWidthPercentage(100.0F);
-                    myDocument.add(new Paragraph("ROHAN'S BAKERY", FontFactory.getFont("Times-Bold", 25.0F, 1)));
+                    myDocument.add(new Paragraph("ANUGA BREAD & BAKERY", FontFactory.getFont("Times-Bold", 25.0F, 1)));
                     myDocument.add(new Paragraph((new Date()).toString()));
                     myDocument.add(new Paragraph(" ", FontFactory.getFont("Times-Bold", 10.0F, 1)));
                     myDocument.add(new Paragraph("------------------------------------------------------------------------------------------------------------------------------"));
@@ -327,7 +312,7 @@ public class printBill extends JFrame {
         this.dispose();
     }
 
-    public static void main(String[] args) {
+     static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;
