@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.nio.file.Files;
 
 class Product {
     private int id;
@@ -432,10 +433,25 @@ public class BakeryManagementApp extends JFrame {
             while (resultSet.next()) {
                 int id = resultSet.getInt("iId"); // Get the item id
                 String name = resultSet.getString("iName");
-                String description = "<html><img src='file:" + resultSet.getString("image") + "' width='50' height='50'> " + name + " - $" + resultSet.getDouble("iSp") + "</html>";
-                double price = resultSet.getDouble("iSp");
 
-                catalog.add(new Product(id, name, description, price)); // Include the id when creating the Product
+                // Retrieve the image file path
+                String imagePath = resultSet.getString("image_data");
+                
+                if (imagePath != null) {
+                    // Replace single backslashes with double backslashes
+                    imagePath = imagePath.replace("\\", "\\\\");
+
+                    // Now imagePath contains the path with double backslashes
+                    // You can use imagePath in your code
+                    String description = "<html><img src='file:" + imagePath + "' width='50' height='50'> " + name + " - $" + resultSet.getDouble("iSp") + "</html>";
+
+                    double price = resultSet.getDouble("iSp");
+                    System.out.println("Description: " + description);
+                    System.out.println("Image Path: " + imagePath);
+
+                    catalog.add(new Product(id, name, description, price));
+                }
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -890,7 +906,7 @@ public class BakeryManagementApp extends JFrame {
         return checkoutPanel;
     }
 
-    public void updateCheckoutInformation(String paymentMethod, String fullName, String phoneNumber, String promoCode, String address) {
+     void updateCheckoutInformation(String paymentMethod, String fullName, String phoneNumber, String promoCode, String address) {
         String url = "jdbc:mysql://localhost:3306/bakery1";
         String dbUsername = "root";
         String dbPassword = ""; // Replace with your MySQL password
@@ -947,12 +963,11 @@ public class BakeryManagementApp extends JFrame {
             String username = loggedInUsername; // Replace with the actual username you want to search for
 
             // Query to fetch customer details
-            String query = "SELECT cus_id, fullname, address, phone FROM customer WHERE name = '" + username + "'";
+            String query = "SELECT fullname, address, phone FROM customer WHERE name = '" + username + "' ORDER BY cus_id DESC LIMIT 1";
             ResultSet rs = stmt.executeQuery(query);
 
             // Display the fetched customer details
             while (rs.next()) {
-                String invoiceId = String.valueOf(rs.getInt("cus_id"));
                 String name = rs.getString("fullname");
                 String address = rs.getString("address");
                 String phone = rs.getString("phone");
@@ -964,14 +979,19 @@ public class BakeryManagementApp extends JFrame {
                         "<p><strong>Phone:</strong> " + phone + "</p>";
 
                 // Now, query for billing details
-                String query1 = "SELECT  bAmount, iName, bDate FROM billing WHERE bCustName = '" + username + "'";
+                String query1 = "SELECT bNumber, iSp, iName, bDate FROM billing WHERE bCustName = '" + username + "' ORDER BY bId DESC LIMIT 1";
                 ResultSet rs1 = stmt1.executeQuery(query1);
 
                 // Display the fetched billing details
                 StringBuilder productNames = new StringBuilder();
+                // Declare variables outside of the loop
+                String invoice = "";
                 double total = 0;
+
+                // Display the fetched billing details
                 while (rs1.next()) {
-                    total += rs1.getDouble("bAmount");
+                    invoice = rs1.getString("bNumber");
+                    total += rs1.getDouble("iSp");
                     String productName = rs1.getString("iName");
                     String bDate = rs1.getString("bDate");
                     productNames.append(productName).append("<br>");
@@ -980,7 +1000,7 @@ public class BakeryManagementApp extends JFrame {
                 // Create HTML content for billing details
                 String billingDetailsHtml = "<h2>Invoice Details</h2>" +
                         "<table border='1' style='width: 100%;'>" +
-                        "<tr><td><strong>Invoice ID:</strong></td><td>" + invoiceId + "</td></tr>" +
+                        "<tr><td><strong>Invoice ID:</strong></td><td>" + invoice + "</td></tr>" +
                         "<tr><td><strong>Total:</strong></td><td>" + total + "</td></tr>" +
                         "<tr><td><strong>Product Names:</strong></td><td>" + productNames.toString() + "</td></tr>" +
                         "</table>";
@@ -1014,6 +1034,7 @@ public class BakeryManagementApp extends JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
         // Add JTextPane to the panel
         invoicePanel.add(new JScrollPane(textPane), BorderLayout.CENTER);
@@ -1111,7 +1132,7 @@ public class BakeryManagementApp extends JFrame {
         });
     }
 }
- class Main {
+class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             BakeryManagementApp app = new BakeryManagementApp();

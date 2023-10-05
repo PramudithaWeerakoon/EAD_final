@@ -377,8 +377,7 @@ public class addItem extends JFrame {
         gb.setVisible(true);
         this.dispose();
     }
-
-     static void main(String[] args) {
+    static void main(String[] args) {
         try {
             UIManager.LookAndFeelInfo[] var1 = UIManager.getInstalledLookAndFeels();
             int var2 = var1.length;
