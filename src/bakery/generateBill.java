@@ -1,11 +1,11 @@
 package bakery;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
+import net.proteanit.sql.DbUtils;
+
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -13,20 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.table.DefaultTableModel;
-import net.proteanit.sql.DbUtils;
 
 public class generateBill extends JFrame {
     Connection conn = null;
@@ -147,7 +133,7 @@ public class generateBill extends JFrame {
         this.jLabel1.setText("Bill details : ");
         this.pnl_main.add(this.jLabel1);
         this.jLabel1.setBounds(20, 20, 120, 23);
-        this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
+        this.lbl_background.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.pnl_main.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 1110, 470);
         GroupLayout layout = new GroupLayout(this.getContentPane());

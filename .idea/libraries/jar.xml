@@ -1,10 +1,15 @@
 <component name="libraryTable">
   <library name="jar">
     <CLASSES>
-      <root url="file://$USER_HOME$/Downloads/jar" />
+      <root url="jar://$USER_HOME$/Downloads/1/commons-beanutils-1.9.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/1/commons-collections-3.2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/1/commons-collections4-4.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/1/commons-digester-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/1/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/1/ecj-3.21.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jasperreports-xalan-6.20.6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$USER_HOME$/Downloads/jar" recursive="false" />
   </library>
 </component>

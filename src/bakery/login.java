@@ -1,35 +1,19 @@
 package bakery;
 
-import  Main.*;
-import com.mysql.cj.x.protobuf.MysqlxCursor;
+import Main.BakeryManagementApp;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.GroupLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.GroupLayout.Alignment;
+
 
 public class login extends JFrame {
     Connection conn = null;
@@ -128,7 +112,7 @@ public class login extends JFrame {
         this.jPanel1.add(this.btn_Back);
         this.btn_Back.setBounds(180, 320, 90, 30);
 
-        this.lbl_background.setIcon(new ImageIcon(this.getClass().getResource("/com.images/Background image.jpeg")));
+        this.lbl_background.setIcon(new ImageIcon("C:\\Users\\Pramuditha\\OneDrive\\Desktop\\New project\\logout.png"));
         this.jPanel1.add(this.lbl_background);
         this.lbl_background.setBounds(0, 0, 640, 450);
         GroupLayout layout = new GroupLayout(this.getContentPane());
@@ -170,8 +154,10 @@ public class login extends JFrame {
             } else {
                 JOptionPane.showMessageDialog((Component)null, "Username and password incorrect");
             }
-        } catch (Exception var15) {
-            JOptionPane.showMessageDialog((Component)null, "Username and password incorrect");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Database error: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Unexpected error: " + e.getMessage());
         } finally {
             try {
                 this.rs.close();
